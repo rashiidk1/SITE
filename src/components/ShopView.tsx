@@ -42,7 +42,7 @@ export const ShopView: React.FC = () => {
                 <p className="text-gray-400 text-sm">Готов к покупкам?</p>
               </div>
             </div>
-            <button 
+            <button
               onClick={() => dispatch({ type: 'SET_SHOW_JOINTS_MODAL', payload: true })}
               className="bg-gray-800 hover:bg-gray-700 rounded-xl px-3 py-2 transition-colors"
             >
@@ -52,43 +52,42 @@ export const ShopView: React.FC = () => {
                 <span className="text-gray-400 text-sm">косяков</span>
               </div>
             </button>
-            </div>
           </div>
+        </div> {/* Этот div закрывает блок "px-4 py-6" */}
 
-          {/* Search */}
-          <div className="relative mb-4">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Поиск товаров..."
-              value={searchQuery || ''}
-              onChange={(e) => dispatch({ type: 'SET_SEARCH_QUERY', payload: e.target.value })}
-              className="w-full bg-gray-800/50 border border-gray-700 rounded-2xl pl-12 pr-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20"
-            />
-            <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 hover:bg-gray-600 p-2 rounded-xl transition-colors">
-              <Filter className="w-4 h-4 text-gray-300" />
-            </button>
-          </div>
-
-          {/* Categories */}
-          <div className="flex space-x-3 overflow-x-auto pb-2">
-            {['Популярное', 'Домашние', 'Уличные', 'Семена', 'Аксессуары'].map((category, index) => (
-              <motion.button
-                key={category}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-4 py-2 rounded-xl font-medium whitespace-nowrap transition-all ${
-                  index === 0
-                    ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                }`}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </div>
+        {/* Search */}
+        <div className="relative mb-4">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Поиск товаров..."
+            value={searchQuery || ''}
+            onChange={(e) => dispatch({ type: 'SET_SEARCH_QUERY', payload: e.target.value })}
+            className="w-full bg-gray-800/50 border border-gray-700 rounded-2xl pl-12 pr-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20"
+          />
+          <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 hover:bg-gray-600 p-2 rounded-xl transition-colors">
+            <Filter className="w-4 h-4 text-gray-300" />
+          </button>
         </div>
-      </div>
+
+        {/* Categories */}
+        <div className="flex space-x-3 overflow-x-auto pb-2">
+          {['Популярное', 'Домашние', 'Уличные', 'Семена', 'Аксессуары'].map((category, index) => (
+            <motion.button
+              key={category}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`px-4 py-2 rounded-xl font-medium whitespace-nowrap transition-all ${
+                index === 0
+                  ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
+                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+              }`}
+            >
+              {category}
+            </motion.button>
+          ))}
+        </div>
+      </div> {/* Этот div закрывает весь "sticky" хедер */}
 
       {/* Products Grid */}
       <div className="px-4 py-6">
@@ -114,7 +113,7 @@ export const ShopView: React.FC = () => {
           </div>
         )}
       </div>
-      
+
       {showJointsModal && <JointsModal />}
     </div>
   )
